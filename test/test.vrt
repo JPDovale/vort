@@ -1,0 +1,4 @@
+def fn str {
+  def var vamooo = 12;
+  def var t1 = 10 + 12 + 13 +16;
+}
