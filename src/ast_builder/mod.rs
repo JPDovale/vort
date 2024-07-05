@@ -2,6 +2,7 @@ mod parse_block;
 mod parse_definition;
 mod parse_file;
 mod parse_function_definition;
+mod parse_identifier;
 mod parse_primitive;
 mod parse_variable_definition;
 mod parse_variable_initalization;
@@ -16,6 +17,7 @@ pub enum NodeType {
     Block,
     VariableDefinition,
     FunctionDefinition,
+    CallExpression,
 }
 
 #[derive(Debug, PartialEq)]
@@ -95,6 +97,7 @@ pub struct Node {
     pub init: Option<NodeInit>,
     pub definitions: Option<Vec<Node>>,
     pub body: Option<NodeBody>,
+    pub callee: Option<NodeId>,
 }
 
 #[derive(Debug, PartialEq)]

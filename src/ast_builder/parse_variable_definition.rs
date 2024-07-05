@@ -20,6 +20,7 @@ pub fn parse_variable_definition(childs: &mut Vec<Node>, tokens: &mut Peekable<I
                         line: f_token.line,
                         definitions: None,
                         body: None,
+                        callee: None,
                         init: Some(init),
                         id: Some(NodeId {
                             _type: NodeIdType::Identifier,

@@ -8,7 +8,13 @@ pub fn parse_file(tokens: &mut Peekable<Iter<Token>>) -> NodeFile {
     while let Some(token) = tokens.peek() {
         match token.token_type {
             TokenType::Def => parse_definition(&mut childs, tokens),
-            _ => panic!("Invalid token"),
+            TokenType::RBracket => {
+                tokens.next();
+            }
+            TokenType::Semicolon => {
+                tokens.next();
+            }
+            _ => panic!("parse_file: unexpected token: {:?}", token),
         }
     }
 

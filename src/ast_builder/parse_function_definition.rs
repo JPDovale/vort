@@ -15,6 +15,7 @@ pub fn parse_function_definition(childs: &mut Vec<Node>, tokens: &mut Peekable<I
                     start: f_token.start,
                     end: f_token.end,
                     init: None,
+                    callee: None,
                     body: Some(body),
                     definitions: None,
                     id: Some(NodeId {

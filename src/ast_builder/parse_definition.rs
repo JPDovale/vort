@@ -14,6 +14,8 @@ pub fn parse_definition(childs: &mut Vec<Node>, tokens: &mut Peekable<Iter<Token
         match token.token_type {
             TokenType::Var => parse_variable_definition(&mut definitions, tokens),
             TokenType::Fn => parse_function_definition(&mut definitions, tokens),
+            TokenType::RBracket => break,
+            TokenType::Semicolon => break,
             _ => panic!("Invalid definition by parse_definition {:?}", token),
         }
     }
@@ -27,6 +29,7 @@ pub fn parse_definition(childs: &mut Vec<Node>, tokens: &mut Peekable<Iter<Token
         id: None,
         init: None,
         body: None,
+        callee: None,
     };
 
     childs.push(node);

@@ -109,6 +109,18 @@ fn node_to_rust(node: &Node) -> String {
                 panic!("Expected node id")
             }
         }
+        NodeType::CallExpression => {
+            if let Some(callee) = &node.callee {
+                let mut rust_code = String::new();
+
+                rust_code.push_str(callee.name.as_str());
+                rust_code.push_str("();\n");
+
+                return rust_code;
+            } else {
+                panic!("Expected callee")
+            }
+        }
         _ => panic!("Not implemented"),
     }
 }

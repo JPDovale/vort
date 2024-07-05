@@ -1,4 +1,11 @@
-def fn str {
+def fn opaaa {
   def var vamooo = 12;
   def var t1 = 10 + 12 + 13 +16;
-}
+};
+
+def fn str {
+  opaaa();
+  def var vamooo = 12;
+  def var t1 = 10 + 12 + 13 + 16;
+};
+

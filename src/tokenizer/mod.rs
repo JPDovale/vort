@@ -3,7 +3,10 @@ mod identifier;
 mod number;
 mod operators;
 
-use delimiters::{process_comma, process_lbracket, process_rbracket, process_semicolon};
+use delimiters::{
+    process_comma, process_lbracket, process_lparen, process_rbracket, process_rparen,
+    process_semicolon,
+};
 use identifier::process_identifier;
 use number::process_number;
 use operators::{process_eq, process_plus};
@@ -17,8 +20,8 @@ pub enum TokenType {
     // Minus,
     // Asterisk,
     // Slash,
-    // LParen,
-    // RParen,
+    LParen,
+    RParen,
     LBracket,
     RBracket,
     Semicolon,
@@ -50,6 +53,8 @@ pub fn tokenize(input: &str) -> Result<Vec<Token>, String> {
             '_' => tokens.push(process_identifier(&mut chars, &mut line, &mut column)),
             '{' => tokens.push(process_lbracket(&mut chars, &mut line, &mut column)),
             '}' => tokens.push(process_rbracket(&mut chars, &mut line, &mut column)),
+            '(' => tokens.push(process_lparen(&mut chars, &mut line, &mut column)),
+            ')' => tokens.push(process_rparen(&mut chars, &mut line, &mut column)),
             ';' => tokens.push(process_semicolon(&mut chars, &mut line, &mut column)),
             ',' => tokens.push(process_comma(&mut chars, &mut line, &mut column)),
             '+' => tokens.push(process_plus(&mut chars, &mut line, &mut column)),

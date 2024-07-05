@@ -13,7 +13,7 @@ pub fn parse_variable_initialization(tokens: &mut Peekable<Iter<Token>>) -> Node
                     let value = parse_primitive(token);
 
                     let left = NodeInit {
-                        _type: NodeInitType::Expression,
+                        _type: NodeInitType::Int,
                         line: token.line,
                         start: token.start,
                         end: token.end,

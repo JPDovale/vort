@@ -69,3 +69,31 @@ pub fn process_rbracket(
 
     return token;
 }
+
+pub fn process_lparen(chars: &mut Peekable<Chars>, line: &mut usize, column: &mut usize) -> Token {
+    let token = Token {
+        token_type: TokenType::LParen,
+        line: *line,
+        start: *column,
+        end: *column,
+    };
+
+    chars.next();
+    *column += 1;
+
+    return token;
+}
+
+pub fn process_rparen(chars: &mut Peekable<Chars>, line: &mut usize, column: &mut usize) -> Token {
+    let token = Token {
+        token_type: TokenType::RParen,
+        line: *line,
+        start: *column,
+        end: *column,
+    };
+
+    chars.next();
+    *column += 1;
+
+    return token;
+}
